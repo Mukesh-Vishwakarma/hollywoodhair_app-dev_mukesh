@@ -25,7 +25,7 @@ const en_US = {
   'confirm_password': 'confirm password',
   'change_password_des': 'To reset your password, we need your email or mobile number that can be authenticated',
   'profile': 'Profile',
-  'setting': 'Setting',
+  'setting': 'Settings',
   'languages': 'Languages',
   'terms_&_condition': 'Terms & condition',
   'privacy_policy': 'Privacy policy',

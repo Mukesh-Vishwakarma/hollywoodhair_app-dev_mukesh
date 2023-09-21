@@ -46,7 +46,31 @@ abstract class AppStyles {
         fontWeight: weight ?? FontWeight.w400,
         // overflow: TextOverflow.ellipsis,
         fontSize: fontSize ?? dimen12,
-        fontFamily: 'JosefinSans',
+        fontFamily: 'DIN Neuzeit Grotesk',
+        color: color ?? Colors.black,
+        decoration: decoration ?? TextDecoration.none,
+        height: height ?? 1.4);
+  }
+
+  static headerTextStyle({fontSize, color, decoration, height, weight}) {
+    return TextStyle(
+        fontWeight: weight ?? FontWeight.w400,
+        // overflow: TextOverflow.ellipsis,
+        fontSize: fontSize ?? dimen12,
+        fontFamily: 'Sans serif',
+        color: color ?? Colors.black,
+        decoration: decoration ?? TextDecoration.none,
+        height: height ?? 1.4);
+  }
+
+
+
+  static bodyTextStyle({fontSize, color, decoration, height, weight}) {
+    return TextStyle(
+        fontWeight: weight ?? FontWeight.w400,
+        // overflow: TextOverflow.ellipsis,
+        fontSize: fontSize ?? dimen12,
+        fontFamily: 'Josefin Sans',
         color: color ?? Colors.black,
         decoration: decoration ?? TextDecoration.none,
         height: height ?? 1.4);

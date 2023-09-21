@@ -50,12 +50,15 @@ class ProfileScreen extends GetView<ProfileController> {
                           ),
                         ),
                       ),
+
+
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Obx(()=>Text(controller.userName.toString(),
                             style: AppStyles.textStyle(
                                 fontSize: dimen15, weight: FontWeight.w500))),
                       ),
+
 
                       Obx(()=>controller.phoneNumber.value!=null?
                       Padding(
@@ -66,6 +69,8 @@ class ProfileScreen extends GetView<ProfileController> {
                                 fontSize: dimen12,
                                 weight: FontWeight.w400)),
                       ):Container()),
+
+
                       GestureDetector(
                         onTap: (){
                           controller.editScreenRoute();
@@ -100,7 +105,7 @@ class ProfileScreen extends GetView<ProfileController> {
 
                       Expanded(child: Padding(
                         padding: const EdgeInsets.only(left: 20),
-                        child: Text("My orders",
+                        child: Text("My Orders",
                             style: AppStyles.textStyle(
                                 fontSize: dimen15, weight: FontWeight.w400,)
 
@@ -135,7 +140,7 @@ class ProfileScreen extends GetView<ProfileController> {
 
                       Expanded(child: Padding(
                         padding: const EdgeInsets.only(left: 20),
-                        child: Text("My appointment",
+                        child: Text("My Appointments",
                             style: AppStyles.textStyle(
                               fontSize: dimen15, weight: FontWeight.w400,)
 
@@ -204,7 +209,7 @@ class ProfileScreen extends GetView<ProfileController> {
 
                       Expanded(child: Padding(
                         padding: const EdgeInsets.only(left: 20),
-                        child: Text("Setting",
+                        child: Text("Settings",
                             style: AppStyles.textStyle(
                               fontSize: dimen15, weight: FontWeight.w400,)
 
@@ -221,7 +226,7 @@ class ProfileScreen extends GetView<ProfileController> {
                 ),
               ),
 
-              Padding(
+           /*   Padding(
                 padding: const EdgeInsets.only(left: 20,right: 20),
                 child: Divider(),
               ),
@@ -249,7 +254,7 @@ class ProfileScreen extends GetView<ProfileController> {
                     ),
                   ],
                 ),
-              ),
+              ),*/
 
               Padding(
                 padding: const EdgeInsets.only(left: 20,right: 20),
@@ -262,7 +267,7 @@ class ProfileScreen extends GetView<ProfileController> {
 
                     Expanded(child: Padding(
                       padding: const EdgeInsets.only(left: 20),
-                      child: Text("Cart",
+                      child: Text("My Carts",
                           style: AppStyles.textStyle(
                             fontSize: dimen15, weight: FontWeight.w400,)
 
@@ -289,7 +294,7 @@ class ProfileScreen extends GetView<ProfileController> {
 
                     Expanded(child: Padding(
                       padding: const EdgeInsets.only(left: 20),
-                      child: Text("Wishlist",
+                      child: Text("My Wishlists",
                           style: AppStyles.textStyle(
                             fontSize: dimen15, weight: FontWeight.w400,)
 

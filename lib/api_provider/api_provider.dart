@@ -468,8 +468,7 @@ class ApiProvider {
 
   Future funProductListShopify(product) async {
     try {
-      Response response =
-          await _dio.get('api/2023-07/collections/$product/products.json');
+      Response response = await _dio.get('api/2023-07/collections/$product/products.json');
       print("response of Collections >>>${response.data!}");
       return GetAllProductModel.fromJson(response.data!);
     } catch (error, stacktrace) {

@@ -101,6 +101,7 @@ flutter:
   assets:
     - assets/images/
     - assets/font/
+    - assets/font/DIN/
     - assets/dummy_images/
     - assets/json/
 
@@ -118,6 +119,18 @@ flutter:
         - asset: assets/font/JosefinSans-ExtraLight.ttf
           weight: 300
         - asset: assets/font/JosefinSans-Italic.ttf
+
+    - family: DIN Neuzeit Grotesk
+      fonts:
+        - asset: assets/font/DIN/DINNeuzeitGroteskLT-BoldCond.ttf
+          weight: 700
+        - asset: assets/font/DIN/DINNeuzeitGroteskLT-Light.ttf
+          weight: 400
+
+    - family: SansSerif
+      fonts:
+        - asset: assets/font/sans_serif/SansSerif Regular.ttf
+          weight: 400
 
   # fonts:
   #   - family: Schyler

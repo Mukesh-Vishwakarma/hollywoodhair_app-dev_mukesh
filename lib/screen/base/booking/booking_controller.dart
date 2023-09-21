@@ -12,10 +12,10 @@ class BookingController extends GetxController {
           text: "Style Selection Consultation",
           description: "Consult with experts",
       image: Assets.demo1),
-      BookingModel(
-          text: "Book In-Store Appointment",
-          description: "Unlock your perfect look",
-          image: Assets.demo2),
+      // BookingModel(
+      //     text: "Book In-Store Appointment",
+      //     description: "Unlock your perfect look",
+      //     image: Assets.demo2),
     ];
     super.onInit();
   }

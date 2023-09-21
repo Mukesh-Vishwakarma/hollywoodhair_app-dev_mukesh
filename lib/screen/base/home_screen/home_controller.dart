@@ -13,6 +13,8 @@ import 'package:sizer/sizer.dart';
 import '../../../util/app_colors.dart';
 
 class HomeController extends GetxController with GetTickerProviderStateMixin {
+  final GlobalKey <ScaffoldState> key = GlobalKey();
+
   var searchController = TextEditingController();
 
   var selectCategories = RxInt(-1);

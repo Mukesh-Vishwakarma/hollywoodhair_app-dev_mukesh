@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:hollywood_hair/util/app_colors.dart';
 import 'package:hollywood_hair/util/app_style.dart';
 import 'package:hollywood_hair/util/assets.dart';
+import 'package:hollywood_hair/util/res_dimens.dart';
 import 'package:hollywood_hair/util/route/app_pages.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:shopify_flutter/models/models.dart';
@@ -22,40 +23,187 @@ class HomeScreen extends GetView<HomeController> {
       systemNavigationBarColor: Colors.white,
     ));
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(7.h),
-        child: AppBar(
-          elevation: 0.4,
-          backgroundColor: AppColors.colorFF,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const SizedBox(
-                width: 15,
-              ),
-              Image.asset(Assets.appLogo),
-              const SizedBox(
-                width: 10,
-              ),
-              Image.asset(Assets.appNameVertical),
-            ],
+      key: controller.key,
+      appBar: AppBar(
+        elevation: 0.4,
+        backgroundColor: AppColors.colorFF,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const SizedBox(
+              width: 15,
+            ),
+            Image.asset(Assets.appLogo),
+            const SizedBox(
+              width: 10,
+            ),
+            Image.asset(Assets.appNameVertical),
+          ],
+        ),
+        leading: GestureDetector(
+          child: Container(
+            margin: const EdgeInsets.only(left: 23, right: 10),
+            child: const Image(
+              image: AssetImage(Assets.menuBar),
+            ),
           ),
-          automaticallyImplyLeading: false,
-          actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 20.0),
-              child: InkWell(
-                  onTap: () {}, child: SvgPicture.asset(Assets.favouriteIcon)),
+          onTap: () {
+            print("hello");
+            controller.key.currentState!.openDrawer();
+          },
+        ),
+        // automaticallyImplyLeading: false,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 20.0),
+            child: InkWell(
+                onTap: () {}, child: SvgPicture.asset(Assets.favouriteIcon)),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 20.0),
+            child: InkWell(
+                onTap: () {
+                  Get.toNamed(AppPages.notificationScreen);
+                },
+                child: SvgPicture.asset(Assets.notificationIcon)),
+          ),
+        ],
+      ),
+      drawer: Drawer(
+        width: 270,
+
+        // Add a ListView to the drawer. This ensures the user can scroll
+        // through the options in the drawer if there isn't enough vertical
+        // space to fit everything.
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              height: 20.h,
+              child: DrawerHeader(
+                decoration: const BoxDecoration(
+                  color: AppColors.primaryColor,
+                    border: Border(
+                        bottom: BorderSide(width: 2, color: Colors.transparent))),
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 0),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      GestureDetector(
+                        child: const Icon(
+                          Icons.arrow_back,
+                          size: 20,
+                        ),
+                        onTap: () {
+                          Get.back();
+                        },
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(left: 24),
+                        child: Text("Menu",
+                            style: AppStyles.textStyle(fontSize: dimen15)),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(right: 20.0),
-              child: InkWell(
-                  onTap: () {
-                    Get.toNamed(AppPages.notificationScreen);
-                  },
-                  child: SvgPicture.asset(Assets.notificationIcon)),
+            const SizedBox(
+              height: 30,
             ),
+            GestureDetector(
+              onTap:
+                  (){
+                // Get.toNamed(AppPages.myOrderScreen);
+              },
+              child: Padding(
+                padding: const EdgeInsets.only(top: 10,bottom: 5),
+                child: Row(
+                  children: [
+
+                    Expanded(child: Padding(
+                      padding: const EdgeInsets.only(left: 20),
+                      child: Text("Show Room",
+                          style: AppStyles.textStyle(
+                            fontSize: dimen15, weight: FontWeight.w400,)
+
+                      ),
+                    )),
+
+
+                    Padding(
+                      padding: const EdgeInsets.only(right: 20,top: 10),
+                      child: Image.asset(Assets.arrowLeft,height: 30,width: 30,),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+
+
+            GestureDetector(
+              onTap: () {
+                Get.toNamed(AppPages.languagesScreen);
+              },
+              child: Padding(
+                padding: const EdgeInsets.only(top: 5,bottom: 5),
+                child: Row(
+                  children: [
+                    Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 20),
+                          child: Text("languages".tr,
+                              style: AppStyles.textStyle(
+                                fontSize: dimen15,
+                                weight: FontWeight.w400,
+                              )),
+                        )),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 20, top: 10),
+                      child: Image.asset(
+                        Assets.arrowLeft,
+                        height: 30,
+                        width: 30,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                Get.toNamed(AppPages.contactScreen);
+              },
+              child: Padding(
+                padding: const EdgeInsets.only(top: 5,bottom: 5),
+                child: Row(
+                  children: [
+                    Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 20),
+                          child: Text("contact_us".tr,
+                              style: AppStyles.textStyle(
+                                fontSize: dimen15,
+                                weight: FontWeight.w400,
+                              )),
+                        )),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 20, top: 10),
+                      child: Image.asset(
+                        Assets.arrowLeft,
+                        height: 30,
+                        width: 30,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+
           ],
         ),
       ),
@@ -178,11 +326,12 @@ class HomeScreen extends GetView<HomeController> {
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
                       itemCount: controller.topProduct.length,
-                      gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                          maxCrossAxisExtent: 270,
-                          childAspectRatio: 3 / 3,
-                          crossAxisSpacing: 10,
-                          mainAxisSpacing: 10),
+                      gridDelegate:
+                          const SliverGridDelegateWithMaxCrossAxisExtent(
+                              maxCrossAxisExtent: 270,
+                              childAspectRatio: 3 / 3.5,
+                              crossAxisSpacing: 10,
+                              mainAxisSpacing: 10),
                       itemBuilder: (context, index) {
                         return commonProductWidget(
                             productList: controller.topProduct.value[index]);
@@ -200,23 +349,22 @@ class HomeScreen extends GetView<HomeController> {
       },
       child: Container(
         width: 20.w,
-        height: 20.h,
+        // height: 20.h,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Stack(
               children: [
                 ClipRRect(
-                    borderRadius: BorderRadius.circular(6),
-                    // child: Image.network(
-                    //   productList.image,
-                    //   fit: BoxFit.cover,
-                    //   width: 50.w,
-                    //   height: 17.h,
-                    // )
+                  borderRadius: BorderRadius.circular(6),
+                  // child: Image.network(
+                  //   productList.image,
+                  //   fit: BoxFit.cover,
+                  //   width: 50.w,
+                  //   height: 17.h,
+                  // )
                   child: controller.networkImageWithLoader(
-                      userProfile:
-                      productList.image ?? ""),
+                      userProfile: productList.image ?? ""),
                 ),
                 // Positioned(
                 //     top: 10,
@@ -234,30 +382,36 @@ class HomeScreen extends GetView<HomeController> {
             Text(
               productList.title,
               overflow: TextOverflow.ellipsis,
+
+              // overflow: TextOverflow.ellipsis,
               style: AppStyles.textStyle(
                 weight: FontWeight.w500,
                 fontSize: 14.0,
               ),
             ),
-            Row(
-              children: [
-                Text(
-                  productList.formattedPrice,
-                  style: AppStyles.textStyle(
-                    weight: FontWeight.w500,
-                    fontSize: 12.0,
+            Expanded(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    productList.formattedPrice,
+                    overflow: TextOverflow.ellipsis,
+                    style: AppStyles.textStyle(
+                      weight: FontWeight.w500,
+                      fontSize: 12.0,
+                    ),
                   ),
-                ),
-                const SizedBox(width: 5),
-                Text(
-                  productList.compareAtPriceFormatted,
-                  style: AppStyles.textStyle(
-                    weight: FontWeight.w300,
-                    fontSize: 11.0,
-                    decoration: TextDecoration.lineThrough,
+                  const SizedBox(width: 5),
+                  Text(
+                    productList.compareAtPriceFormatted,
+                    style: AppStyles.textStyle(
+                      weight: FontWeight.w300,
+                      fontSize: 11.0,
+                      decoration: TextDecoration.lineThrough,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ],
         ),
@@ -278,19 +432,21 @@ class HomeScreen extends GetView<HomeController> {
         ),
         const SizedBox(height: 20),
         Obx(
-          () => controller.collectionList.isNotEmpty?SizedBox(
-            height: 100,
-            child: ListView.builder(
-              shrinkWrap: true,
-              physics: const BouncingScrollPhysics(),
-              scrollDirection: Axis.horizontal,
-              itemCount: controller.collectionList.length,
-              itemBuilder: (context, index) {
-                return Obx(() =>
-                    categoriesWidget(controller.collectionList.value[index]));
-              },
-            ),
-          ):shimmerCategory(),
+          () => controller.collectionList.isNotEmpty
+              ? SizedBox(
+                  height: 100,
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    physics: const BouncingScrollPhysics(),
+                    scrollDirection: Axis.horizontal,
+                    itemCount: controller.collectionList.length,
+                    itemBuilder: (context, index) {
+                      return Obx(() => categoriesWidget(
+                          controller.collectionList.value[index]));
+                    },
+                  ),
+                )
+              : shimmerCategory(),
         ),
 
         // Obx(
@@ -305,8 +461,6 @@ class HomeScreen extends GetView<HomeController> {
         //     ),
         //   ),
         // )
-
-
       ],
     );
   }
@@ -337,18 +491,18 @@ class HomeScreen extends GetView<HomeController> {
                   decoration: BoxDecoration(
                       color: AppColors.lightBackgroundColor,
                       borderRadius: BorderRadius.circular(50),
-                      border: Border.all(color: AppColors.primaryColor, width: 1.0)),
+                      border: Border.all(
+                          color: AppColors.primaryColor, width: 1.0)),
                   child: ClipRRect(
-                      borderRadius: BorderRadius.circular(50),
-                      // child: Image.network(
-                      //   categoryItem.imageUrl,
-                      //   fit: BoxFit.cover,
-                      //   width: 55,
-                      //   height: 55,
-                      // )
+                    borderRadius: BorderRadius.circular(50),
+                    // child: Image.network(
+                    //   categoryItem.imageUrl,
+                    //   fit: BoxFit.cover,
+                    //   width: 55,
+                    //   height: 55,
+                    // )
                     child: controller.networkImageCategory(
-                        userProfile:
-                        categoryItem.imageUrl ?? ""),
+                        userProfile: categoryItem.imageUrl ?? ""),
                   ).marginAll(3),
                 ),
                 Flexible(
@@ -361,9 +515,10 @@ class HomeScreen extends GetView<HomeController> {
                       style: AppStyles.textStyle(
                           weight: FontWeight.w500,
                           fontSize: 12.5,
-                          color: controller.selectCategories.value == categoryItem
-                              ? AppColors.lightBackgroundColor
-                              : AppColors.primaryColor),
+                          color:
+                              controller.selectCategories.value == categoryItem
+                                  ? AppColors.lightBackgroundColor
+                                  : AppColors.primaryColor),
                     ),
                   ),
                 ),
@@ -414,7 +569,6 @@ class HomeScreen extends GetView<HomeController> {
     );
   }*/
 
-
   shimmerDemo() {
     return Padding(
       padding: const EdgeInsets.all(10.0),
@@ -429,11 +583,9 @@ class HomeScreen extends GetView<HomeController> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -459,7 +611,9 @@ class HomeScreen extends GetView<HomeController> {
                         ],
                       ),
                     ),
-                    SizedBox(width: 10,),
+                    SizedBox(
+                      width: 10,
+                    ),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -490,7 +644,6 @@ class HomeScreen extends GetView<HomeController> {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -516,7 +669,9 @@ class HomeScreen extends GetView<HomeController> {
                         ],
                       ),
                     ),
-                    SizedBox(width: 10,),
+                    SizedBox(
+                      width: 10,
+                    ),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -547,7 +702,6 @@ class HomeScreen extends GetView<HomeController> {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -573,7 +727,9 @@ class HomeScreen extends GetView<HomeController> {
                         ],
                       ),
                     ),
-                    SizedBox(width: 10,),
+                    SizedBox(
+                      width: 10,
+                    ),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -624,7 +780,6 @@ class HomeScreen extends GetView<HomeController> {
             // scrollDirection: Axis.horizontal,
             child: Column(
               children: [
-
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
@@ -648,7 +803,9 @@ class HomeScreen extends GetView<HomeController> {
                         ],
                       ),
                     ),
-                    SizedBox(width: 10,),
+                    SizedBox(
+                      width: 10,
+                    ),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -669,7 +826,9 @@ class HomeScreen extends GetView<HomeController> {
                         ],
                       ),
                     ),
-                    SizedBox(width: 10,),
+                    SizedBox(
+                      width: 10,
+                    ),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -690,7 +849,9 @@ class HomeScreen extends GetView<HomeController> {
                         ],
                       ),
                     ),
-                    SizedBox(width: 10,),
+                    SizedBox(
+                      width: 10,
+                    ),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -711,7 +872,9 @@ class HomeScreen extends GetView<HomeController> {
                         ],
                       ),
                     ),
-                    SizedBox(width: 10,),
+                    SizedBox(
+                      width: 10,
+                    ),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -732,7 +895,9 @@ class HomeScreen extends GetView<HomeController> {
                         ],
                       ),
                     ),
-                    SizedBox(width: 10,),
+                    SizedBox(
+                      width: 10,
+                    ),
                   ],
                 ).marginOnly(top: 00),
               ],
@@ -742,5 +907,4 @@ class HomeScreen extends GetView<HomeController> {
       ),
     );
   }
-
 }

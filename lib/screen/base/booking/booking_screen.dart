@@ -51,7 +51,7 @@ class BookingScreen extends GetView<BookingController> {
                 itemBuilder: (BuildContext context, int index) {
                   return bookingList(index);
                 }),
-            SizedBox(height: 40),
+           /* SizedBox(height: 40),
             DottedLine(
               dashColor: AppColors.gray99,
             ),
@@ -96,7 +96,7 @@ class BookingScreen extends GetView<BookingController> {
                   ],
                 ),
               ),
-            ),
+            ),*/
             SizedBox(height: 130),
           ],
         ),

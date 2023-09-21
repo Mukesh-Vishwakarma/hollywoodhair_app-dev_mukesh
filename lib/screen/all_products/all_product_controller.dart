@@ -61,8 +61,7 @@ class AllProductController extends GetxController
 
   allProductApi() async {
     try {
-      GetAllProductModel getAllProductModel =
-          await ApiProvider.shopify().funProductListShopify(
+      GetAllProductModel getAllProductModel = await ApiProvider.shopify().funProductListShopify(
         cateId.value,
       );
 
